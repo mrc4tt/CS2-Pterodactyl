@@ -53,11 +53,11 @@ detect_install_path() {
 }
 
 # Install SourceMod/Metamod when egg variable SOURCEMOD is 1 or true. Otherwise, skip the whole step and act as normal server.
-if [[ "${SOURCEMOD}" = 1 || "${SOURCEMOD}" == "true" ]]; then
+if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     mkdir -p /home/container/"${INSTALL_PATH}"/tmpfiles
     cd /home/container/"${INSTALL_PATH}"/tmpfiles || exit 1
 
-    print_yellow "SourceMod variable is set to 1 or true. Installing SourceMod/Metamod..."
+    print_yellow "MetaMod variable is set to 1 or true. Installing Metamod..."
     detect_install_path
     # Should custom versions be provided, check that they are valid. If not, use latest stable version.
     if [[ -n "${MM_VERSION}" ]]; then
@@ -65,7 +65,7 @@ if [[ "${SOURCEMOD}" = 1 || "${SOURCEMOD}" == "true" ]]; then
         METAMOD_URL="https://sm.alliedmods.net/smdrop/${SM_VERSION}/${SOURCEMOD_SCRAPE}"
     fi
 
-    if [[ -z ${SOURCEMOD_URL} ]]; then
+    if [[ -z ${METAMOD_URL} ]]; then
         download_default_stable
     else
         if is_valid_url "${METAMOD_URL}"; then
