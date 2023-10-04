@@ -5,7 +5,7 @@ sleep 1
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=1.12"
+METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
 
 print() {
     echo -e "$1"
