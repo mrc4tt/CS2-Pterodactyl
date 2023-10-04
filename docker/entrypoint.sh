@@ -79,10 +79,9 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     # Extract SourceMod and Metamod
     print_bold_white "Extracting MetaMod files"
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
-    fi
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
-
+fi
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
     if [ ${SRCDS_STOP_UPDATE} -eq 0 ]; then
