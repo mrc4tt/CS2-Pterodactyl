@@ -82,7 +82,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     fi
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
-fi
 
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
