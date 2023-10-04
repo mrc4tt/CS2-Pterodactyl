@@ -35,7 +35,7 @@ is_valid_url() {
 
 download_default_stable() {
     print_bold_white "Defaulting to and downloading the latest stable MetaMod 2.x releases."
-    curl --location --output --output metamod.tar.gz "$METAMOD_LATEST"
+    curl --location --output metamod.tar.gz "$METAMOD_LATEST"
 }
 
 # Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
@@ -61,8 +61,8 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     detect_install_path
     # Should custom versions be provided, check that they are valid. If not, use latest stable version.
     if [[ -n "${MM_VERSION}" ]]; then
-        METAMOD_SCRAPE=$(curl https://sm.alliedmods.net/smdrop/${SM_VERSION}/sourcemod-latest-linux -sS)
-        METAMOD_URL="https://sm.alliedmods.net/smdrop/${SM_VERSION}/${SOURCEMOD_SCRAPE}"
+        METAMOD_SCRAPE=$(curl https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/mmsource-latest-linux -sS)
+        METAMOD_URL="https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/${METAMOD_SCRAPE}"
     fi
 
     if [[ -z ${METAMOD_URL} ]]; then
