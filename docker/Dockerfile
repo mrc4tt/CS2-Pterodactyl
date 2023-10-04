@@ -8,7 +8,7 @@ LABEL       org.opencontainers.image.source="https://github.com/mrc4tt/cs2-ptero
 RUN         mkdir -p /etc/sudoers.d && echo "%sudo ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/flatdeb && chmod 0440 /etc/sudoers.d/flatdeb
 ENV         DEBIAN_FRONTEND=noninteractive
 USER        container
-ENV         HOME /home/container
+ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 # To-Do: If CS2 requires Wine, the following lines will need to be uncommented
