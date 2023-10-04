@@ -39,7 +39,7 @@ download_default_stable() {
 }
 
 # Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
-INSTALL_PATH="${INSTALL_PATH:-cs2}"
+INSTALL_PATH="${INSTALL_PATH:-game/csgo/}"
 
 detect_install_path() {
     SUPPORTED_GAMES=("cs2" "csgo" "tf" "css" "dod" "cstrike" "left4dead" "leftdead2" "contagion" "alienswarm" "orangebox" "orangebox_valve" "sdk2013" "original" "darkmessiah" "bloodygoodtime" "eye" "blade" "insurgency" "pvkii" "mcv" "hl2mp" "ship")
