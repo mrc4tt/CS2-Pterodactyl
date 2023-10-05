@@ -41,7 +41,7 @@ download_default_stable() {
 
 download_patch() {
     print_bold_white "Defaulting to and downloading the latest GameInfoPatch"
-    curl --location --output fix.tar.gz "$GAMEINFO_FIX"
+    curl --location --output cs2fix.tar.gz "$GAMEINFO_FIX"
 }
 
 # Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
