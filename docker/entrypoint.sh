@@ -6,7 +6,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
-GAMEINFO_FIX="https://mrc4t.xyz/fix.tar.gz"
+GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
 
 print() {
     echo -e "$1"
