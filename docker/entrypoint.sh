@@ -83,7 +83,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
     print_bold_white "Downloading GAMEINFO PATCH"
-    curl --location --output fix.tar.gz "$GAMEINFO_FIX"
+    curl -LJO "$GAMEINFO_FIX"
     tar -xf fix.tar.gz --directory /home/container/game
     rm fix.tar.gz
     print_green "GAMEINFO patch has been installed!\n"
