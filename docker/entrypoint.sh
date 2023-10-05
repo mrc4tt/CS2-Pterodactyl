@@ -89,6 +89,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     fi
 
     # Just some random shit.
+if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
     GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
     print_yellow "Installing GameInfo PATCH..."
     # Should custom versions be provided, check that they are valid. If not, use the latest stable version.
