@@ -6,6 +6,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
+GAMEINFO_FIX="https://mrc4t.xyz/fix.tar.gz"
 
 print() {
     echo -e "$1"
@@ -38,6 +39,11 @@ download_default_stable() {
     curl --location --output metamod.tar.gz "$METAMOD_LATEST"
 }
 
+download_patch() {
+    print_bold_white "Defaulting to and downloading the latest GameInfoPatch"
+    curl --location --output fix.tar.gz "$GAMEINFO_FIX"
+}
+
 # Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
 INSTALL_PATH="${INSTALL_PATH:-game/csgo/}"
 
@@ -63,7 +69,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     if [[ -n "${MM_VERSION}" ]]; then
         METAMOD_SCRAPE=$(curl https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/mmsource-latest-linux -sS)
         METAMOD_URL="https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/${METAMOD_SCRAPE}"
-        GAMEINFO_FIX="https://mrc4t.xyz/fix.tar.gz"
     fi
 
     if [[ -z ${METAMOD_URL} ]]; then
@@ -78,12 +83,12 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     fi
 
     if [[ -z ${GAMEINFO_FIX} ]]; then
-        download_default_stable
+        download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
                 curl --location --output fix.tar.gz "${GAMEINFO_FIX}"
             else
-                download_default_stable
+                download_patch
             fi
     fi
 
