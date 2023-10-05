@@ -100,7 +100,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -JLO "${GAMEINFO_FIX}"
+                curl -JLO cs2fix.tar.gz "${GAMEINFO_FIX}"
             else          
                 download_patch
             fi
@@ -113,8 +113,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     rm -rf "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
     fi
-fi
-
+    
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
     if [ ${SRCDS_STOP_UPDATE} -eq 0 ]; then
