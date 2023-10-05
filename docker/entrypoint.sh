@@ -82,7 +82,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
                 download_default_stable
             fi
     fi
-
     # Extract SourceMod and Metamod
     print_bold_white "Extracting MetaMod files"
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
@@ -92,10 +91,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
 fi
 
 # Install SourceMod/Metamod when egg variable SOURCEMOD is 1 or true. Otherwise, skip the whole step and act as normal server.
-if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
-    mkdir -p /home/container/"${INSTALL_PATH}"/tmpfiles
-    cd /home/container/"${INSTALL_PATH}"/tmpfiles || exit 1
-
     print_yellow "Installing GameInfo PATCH..."
     detect_install_path
     # Should custom versions be provided, check that they are valid. If not, use latest stable version.
@@ -104,12 +99,12 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     fi
 
     if [[ -z ${GAMEINFO_FIX} ]]; then
-        download_default_stable
+        download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
                 curl --location --output cs2fix.tar.gz "${METAMOD_URL}"
             else
-                download_default_stable
+                download_patch
             fi
     fi
 
@@ -128,7 +123,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     file cs2fix.tar.gz
     tar -ztvf cs2fix.tar.gz
     tar -xvzf cs2fix.tar.gz --directory /home/container/
-    print_green "GameInfo PATCH has been installed!\n"
     rm -rf "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
 fi
