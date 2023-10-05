@@ -69,7 +69,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     if [[ -n "${MM_VERSION}" ]]; then
         METAMOD_SCRAPE=$(curl https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/mmsource-latest-linux -sS)
         METAMOD_URL="https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/${METAMOD_SCRAPE}"
-        GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
     fi
 
     if [[ -z ${METAMOD_URL} ]]; then
@@ -85,27 +84,15 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     # Extract SourceMod and Metamod
     print_bold_white "Extracting MetaMod files"
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
-    print_green "Metamod has been installed!\n"
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
-    print_green "GAMEINFO patch has been installed!\n"
-fi
+    print_green "Metamod has been installed!\n"
+    fi
 
-# Install SourceMod/Metamod when egg variable SOURCEMOD is 1 or true. Otherwise, skip the whole step and act as normal server.
+    # Just some random shit.
     print_yellow "Installing GameInfo PATCH..."
-    detect_install_path
     # Should custom versions be provided, check that they are valid. If not, use latest stable version.
     if [[ -n "${GAMEINFO_VERSION}" ]]; then
         GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
-    fi
-
-    if [[ -z ${GAMEINFO_FIX} ]]; then
-        download_patch
-    else
-        if is_valid_url "${GAMEINFO_FIX}"; then
-                curl --location --output cs2fix.tar.gz "${METAMOD_URL}"
-            else
-                download_patch
-            fi
     fi
 
     if [[ -z ${GAMEINFO_FIX} ]]; then
@@ -118,10 +105,9 @@ fi
             fi
     fi
 
-    # Extract SourceMod and Metamod
+    # Extract GamePatch
     print_bold_white "Extracting GAMEINFO PATCH"
     file cs2fix.tar.gz
-    tar -ztvf cs2fix.tar.gz
     tar -xvzf cs2fix.tar.gz --directory /home/container/
     rm -rf "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
