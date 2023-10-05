@@ -86,7 +86,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -O "${GAMEINFO_FIX}"
+                curl --location --output fix.tar.gz "${GAMEINFO_FIX}"
             else
                 download_patch
             fi
