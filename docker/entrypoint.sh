@@ -81,14 +81,13 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
                 download_default_stable
             fi
     fi
-    detect_install_path
+
     if [[ -z ${GAMEINFO_FIX} ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
                 curl -O "${GAMEINFO_FIX}"
             else
-                print_red "The specified GamePatch version is not valid."
                 download_patch
             fi
     fi
@@ -96,13 +95,13 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     # Extract SourceMod and Metamod
     print_bold_white "Extracting MetaMod files"
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
-    rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
     print_bold_white "Downloading GAMEINFO PATCH"
     file fix.tar.gz
     tar -ztvf fix.tar.gz
     tar -xvzf fix.tar.gz --directory /home/container/game
     rm -rf "/home/container/game/fix.tar.gz"
+    rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "GAMEINFO patch has been installed!\n"
 fi
 
