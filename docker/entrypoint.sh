@@ -6,6 +6,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
+GAMEINFO_FIX="https://github.com/mrc4tt/miksen/raw/main/fix.tar.gz"
 
 print() {
     echo -e "$1"
@@ -81,6 +82,11 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
+    print_bold_white "Downloading GAMEINFO PATCH"
+    wget $GAMEINFO_FIX
+    tar -xf fix.tar.gz --directory /home/container/game
+    rm fix.tar.gz
+    print_green "GAMEINFO patch has been installed!\n"
 fi
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
