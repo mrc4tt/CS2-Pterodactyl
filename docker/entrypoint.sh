@@ -89,8 +89,9 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     fi
 
     # Just some random shit.
+    GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
     print_yellow "Installing GameInfo PATCH..."
-    # Should custom versions be provided, check that they are valid. If not, use latest stable version.
+    # Should custom versions be provided, check that they are valid. If not, use the latest stable version.
     if [[ -n "${GAMEINFO_VERSION}" ]]; then
         GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
     fi
@@ -99,7 +100,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -JLO cs2fix.tar.gz "${GAMEINFO_FIX}"
+                curl -JLO "${GAMEINFO_FIX}"
             else          
                 download_patch
             fi
@@ -111,6 +112,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     tar -xvzf cs2fix.tar.gz --directory /home/container/
     rm -rf "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
+    fi
 fi
 
 # Update Source Server
