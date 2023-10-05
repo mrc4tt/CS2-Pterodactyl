@@ -87,7 +87,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
     fi
-fi
 
     # Just some random shit.
 if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
