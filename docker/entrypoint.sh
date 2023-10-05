@@ -81,13 +81,14 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
                 download_default_stable
             fi
     fi
-
+    detect_install_path
     if [[ -z ${GAMEINFO_FIX} ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl --location --output fix.tar.gz "${GAMEINFO_FIX}"
+                curl -O "${GAMEINFO_FIX}"
             else
+                print_red "The specified GamePatch version is not valid."
                 download_patch
             fi
     fi
