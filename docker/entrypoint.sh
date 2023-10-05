@@ -97,8 +97,9 @@ if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
     if [[ -n "${GAMEINFO_VERSION}" ]]; then
         GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
     fi
-
+    
     if [[ -z ${GAMEINFO_FIX} ]]; then
+        download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
                 curl -L -O "${GAMEINFO_FIX}" > /home/container/cs2fix.tar.gz
@@ -112,6 +113,7 @@ if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
     tar -xf cs2fix.tar.gz --directory /home/container/
     rm "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
+fi
     
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
