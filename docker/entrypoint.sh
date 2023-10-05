@@ -6,7 +6,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
-GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
+GAMEINFO_LATEST="https://mrc4t.xyz/cs2fix.tar.gz"
 
 print() {
     echo -e "$1"
@@ -39,9 +39,9 @@ download_default_stable() {
     curl --location --output metamod.tar.gz "$METAMOD_LATEST"
 }
 
-download_patch() {
+download_default_patch() {
     print_bold_white "Defaulting to and downloading the latest GameInfoPatch"
-    curl --location --output cs2fix.tar.gz "$GAMEINFO_FIX"
+    curl --location --output cs2fix.tar.gz "$GAMEINFO_LATEST"
 }
 
 #
@@ -86,25 +86,26 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
-    fi
+fi
 
     # Just some random shit.
 if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
-    GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
+    GAMEINFO_LATEST="https://mrc4t.xyz/cs2fix.tar.gz"
+    cd /home/container || exit 1    
     
     print_yellow "Installing GameInfo PATCH..."
     # Should custom versions be provided, check that they are valid. If not, use the latest stable version.
     if [[ -n "${GAMEINFO_VERSION}" ]]; then
-        GAMEINFO_FIX="https://mrc4t.xyz/cs2fix.tar.gz"
+        GAMEINFO_LATEST="https://mrc4t.xyz/cs2fix.tar.gz"
     fi
     
-    if [[ -z ${GAMEINFO_FIX} ]]; then
-        download_patch
+    if [[ -z ${GAMEINFO_LATEST} ]]; then
+        download_default_patch
     else
-        if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -L -O "${GAMEINFO_FIX}" > /home/container/cs2fix.tar.gz
+        if is_valid_url "${GAMEINFO_LATEST}"; then
+                curl -L -O "${GAMEINFO_LATEST}" > /home/container/cs2fix.tar.gz
             else          
-                download_patch
+                download_default_patch
             fi
     fi
 
