@@ -99,7 +99,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     print_green "Metamod has been installed!\n"
     print_bold_white "Downloading GAMEINFO PATCH"
     tar -xf fix.tar.gz --directory /home/container/game
-    rm -rf "fix.tar.gz"
+    rm -rf "/home/container/game/fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
 fi
 
