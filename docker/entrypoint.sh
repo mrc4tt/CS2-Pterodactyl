@@ -41,7 +41,7 @@ download_default_stable() {
 
 download_patch() {
     print_bold_white "Defaulting to and downloading the latest GameInfoPatch"
-    curl --location --output cs2fix.tar.gz "$GAMEINFO_FIX"
+    curl --output cs2fix.tar.gz "$GAMEINFO_FIX"
 }
 
 # Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
@@ -100,7 +100,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -LO "${GAMEINFO_FIX}"
+                curl -O "${GAMEINFO_FIX}"
             else          
                 download_patch
             fi
@@ -108,9 +108,8 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
 
     # Extract GamePatch
     print_bold_white "Extracting GAMEINFO PATCH"
-    file cs2fix.tar.gz
-    tar -xvzf cs2fix.tar.gz --directory /home/container/
-    rm -rf "/home/container/cs2fix.tar.gz"
+    tar -xf cs2fix.tar.gz --directory /home/container/
+    rm "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
     
 # Update Source Server
