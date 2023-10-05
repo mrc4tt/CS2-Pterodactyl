@@ -41,10 +41,10 @@ download_default_stable() {
 
 download_patch() {
     print_bold_white "Defaulting to and downloading the latest GameInfoPatch"
-    curl --output cs2fix.tar.gz "$GAMEINFO_FIX"
+    curl --location --output cs2fix.tar.gz "$GAMEINFO_FIX"
 }
 
-# Auto detect the game install path by looking for the most common game folders. Default to csgo if none are found or provided by the user.
+#
 INSTALL_PATH="${INSTALL_PATH:-game/csgo/}"
 
 detect_install_path() {
@@ -87,6 +87,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
     fi
+fi
 
     # Just some random shit.
 if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
@@ -102,7 +103,7 @@ if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
         download_patch
     else
         if is_valid_url "${GAMEINFO_FIX}"; then
-                curl -O "${GAMEINFO_FIX}"
+                curl -O "${GAMEINFO_FIX}" > /home/container/cs2fix.tar.gz
             else          
                 download_patch
             fi
@@ -114,6 +115,7 @@ if [[ "${GAMEINFO}" = 1 || "${GAMEINFO}" == "true" ]]; then
     rm "/home/container/cs2fix.tar.gz"
     print_green "GAMEINFO patch has been installed!\n"
     fi
+fi
     
 # Update Source Server
 if [ ! -z ${SRCDS_APPID} ]; then
