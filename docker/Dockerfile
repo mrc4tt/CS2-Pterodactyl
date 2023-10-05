@@ -11,6 +11,9 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
+RUN apt update
+RUN apt install wget tar -y
+
 # To-Do: If CS2 requires Wine, the following lines will need to be uncommented
 # RUN         apt update
 # RUN         apt install -y wine wine64 libwine && apt clean
