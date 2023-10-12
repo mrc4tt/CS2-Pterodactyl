@@ -5,7 +5,8 @@ sleep 1
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
+# old METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
+METAMOD_LATEST="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git1227-linux.tar.gz"
 GAMEINFO_LATEST="https://mrc4t.xyz/cs2fix.tar.gz"
 
 print() {
