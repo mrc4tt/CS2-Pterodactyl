@@ -156,7 +156,7 @@ if [ ! -z ${SRCDS_APPID} ]; then
                 if [ ! -z ${SRCDS_LOGIN} ]; then
                     STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
                 else
-                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} validate +quit"
+                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
                 fi
             else
                 if [ ! -z ${SRCDS_LOGIN} ]; then
