@@ -161,7 +161,8 @@ if [ -f "${GAMEINFO_FILE}" ]; then
     fi
 fi
 
-# cd /home/container || exit 1
+cd /home/container || exit 1
+
 # Replace Startup Variables
 # shellcheck disable=SC2086
 MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
