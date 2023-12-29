@@ -162,12 +162,8 @@ if [ -f "${GAMEINFO_FILE}" ]; then
 fi
 
 # Replace Startup Variables
-# shellcheck disable=SC2086
-MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
-
-# Display the parsed startup string we're going to execute.
-print_yellow "[Startup Command]: ${BOLD_WHITE} ${MODIFIED_STARTUP}\n"
+MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
-# shellcheck disable=SC2086
 eval ${MODIFIED_STARTUP}
