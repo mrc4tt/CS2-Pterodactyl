@@ -161,7 +161,7 @@ if [ -f "${GAMEINFO_FILE}" ]; then
     fi
 fi
 
-cd /home/container || exit 1
+cd /home/container
 
 # Replace Startup Variables
 # shellcheck disable=SC2086
