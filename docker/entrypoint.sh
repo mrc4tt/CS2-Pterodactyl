@@ -59,7 +59,7 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
 
     print_yellow "MetaMod variable is set to 1 or true. Installing Metamod..."
     detect_install_path
-    # Should custom versions be provided, check that they are valid. If not, use latest stable version.
+    # Should custom versions be provided, check that they are valid. If not, use the latest stable version.
     if [[ -n "${MM_VERSION}" ]]; then
         METAMOD_SCRAPE=$(curl https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/mmsource-latest-linux -sS)
         METAMOD_URL="https://mms.alliedmods.net/mmsdrop/${MM_VERSION}/${METAMOD_SCRAPE}"
@@ -160,8 +160,6 @@ if [ -f "${GAMEINFO_FILE}" ]; then
         echo "The file ${GAMEINFO_FILE} has been configured successfully."
     fi
 fi
-
-cd /home/container
 
 # Replace Startup Variables
 # shellcheck disable=SC2086
