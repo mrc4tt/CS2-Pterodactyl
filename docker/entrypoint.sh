@@ -80,7 +80,6 @@ if [[ "${METAMOD}" = 1 || "${METAMOD}" == "true" ]]; then
     tar -xf metamod.tar.gz --directory /home/container/"${INSTALL_PATH}"
     rm -rf "/home/container/${INSTALL_PATH}/tmpfiles"
     print_green "Metamod has been installed!\n"
-    fi
 fi
     
 # Update Source Server
