@@ -1,6 +1,5 @@
-# I N F R A
 # Dockerfile with SteamRT3 
-FROM        registry.gitlab.steamos.cloud/steamrt/sniper/platform 
+FROM        registry.gitlab.steamos.cloud/steamrt/sniper/platform:latest-container-runtime-depot
 LABEL       author="Miksen" maintainer="mikkel@pwnt.dk"
 LABEL       org.opencontainers.image.source="https://github.com/mrc4tt/cs2-pterodactyl"
 
