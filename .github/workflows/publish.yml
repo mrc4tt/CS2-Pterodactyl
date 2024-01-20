@@ -1,5 +1,5 @@
 name: publish
-on: [workflow_dispatch]
+on: push
 jobs:
   publish-docker-image-main:
     runs-on: ubuntu-latest
