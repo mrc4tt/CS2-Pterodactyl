@@ -90,44 +90,44 @@ if [ ! -z ${SRCDS_APPID} ]; then
             if [ ! -z ${SRCDS_BETAPASS} ]; then
                 if [ ${SRCDS_VALIDATE} -eq 1 ]; then
                     if [ ! -z ${SRCDS_LOGIN} ]; then
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} validate +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} validate +quit"
                     else
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} validate +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} validate +quit"
                     fi
                 else
                     if [ ! -z ${SRCDS_LOGIN} ]; then
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} +quit"
                     else
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} +quit"
                     fi
                 fi
             else
                 if [ ${SRCDS_VALIDATE} -eq 1 ]; then
                     if [ ! -z ${SRCDS_LOGIN} ]; then
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} validate +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} validate +quit"
                     else             
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} validate +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} validate +quit"
                     fi
                 else
                     if [ ! -z ${SRCDS_LOGIN} ]; then
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} +quit"
                     else 
-                        STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} +quit"
+                        STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} +quit"
                     fi
                 fi
             fi
         else
             if [ ${SRCDS_VALIDATE} -eq 1 ]; then
                 if [ ! -z ${SRCDS_LOGIN} ]; then
-                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} validate +quit"
+                    STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} validate +quit"
                 else
-                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} validate +quit"
+                    STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} validate +quit"
                 fi
             else
                 if [ ! -z ${SRCDS_LOGIN} ]; then
-                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
+                    STEAMCMD="../steamcmd/steamcmd.sh +login ${SRCDS_LOGIN} ${SRCDS_LOGIN_PASS} +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
                 else
-                    STEAMCMD="/home/container/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
+                    STEAMCMD="../steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit"
                 fi
             fi
         fi
@@ -143,7 +143,7 @@ GAMEINFO_FILE="/home/container/game/csgo/gameinfo.gi"
 GAMEINFO_ENTRY="			Game	csgo/addons/metamod" 
 if [ -f "${GAMEINFO_FILE}" ]; then
     if grep -q "Game[[:blank:]]*csgo\/addons\/metamod" "$GAMEINFO_FILE"; then # match any whitespace
-        echo "File gameinfo.gi already configured. No changes were made."
+        echo "File GAMEINFO.GI already configured. No changes were made."
     else
         awk -v new_entry="$GAMEINFO_ENTRY" '
             BEGIN { found=0; }
