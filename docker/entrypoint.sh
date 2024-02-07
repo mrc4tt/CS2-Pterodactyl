@@ -6,7 +6,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 # old METAMOD_LATEST="https://sourcemm.net/latest.php?os=linux&version=2.0"
-METAMOD_LATEST="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git1280-linux.tar.gz"
+METAMOD_LATEST="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git1281-linux.tar.gz"
 
 print() {
     echo -e "$1"
